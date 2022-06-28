@@ -12,13 +12,14 @@
     align-items: center;
     gap: 15px 10px;
     max-width: 1170px;
+    margin-top: 10px;
 }
 .productListContainer{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: red;
+
 }
 .imgContainer { 
     max-width: 250px;
@@ -26,4 +27,26 @@
 .imgContainer img { 
     max-width: 100%;
     height: auto;
+}
+
+.productDesc {
+    background-color: #e7dcfb;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    /* color: #1832c5; */
+    padding: 10px;
+    /* font-weight: bold; */
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn { 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #6d28d9;
+    padding: 3px 8px;
+    border-radius: 8px;
+    color: #fff ;
 }

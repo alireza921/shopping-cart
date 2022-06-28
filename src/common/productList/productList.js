@@ -1,6 +1,9 @@
 import { products } from "../../data/DataBase";
 import styles from "./productlist.module.css";
 const ProductList = () => {
+  const addToCartHandler = (product) => {
+    console.log(product);
+  };
   return (
     <>
       <h2>Product List</h2>
@@ -11,9 +14,14 @@ const ProductList = () => {
               <div className={styles.imgContainer}>
                 <img src={product.image} alt={product.name} />
               </div>
-              <div>
+              <div className={styles.productDesc}>
                 <span> {product.name} </span>
-                <span> {product.price} </span>
+                <span> $ {product.price} </span>
+                <button
+                  className={styles.btn}
+                  onClick={() => addToCartHandler(product)}>
+                  Add to cart
+                </button>
               </div>
             </section>
           ))}
