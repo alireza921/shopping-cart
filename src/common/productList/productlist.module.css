@@ -1,0 +1,29 @@
+.productList { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productListHolder{ 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px 10px;
+    max-width: 1170px;
+}
+.productListContainer{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.imgContainer { 
+    max-width: 250px;
+}
+.imgContainer img { 
+    max-width: 100%;
+    height: auto;
+}
