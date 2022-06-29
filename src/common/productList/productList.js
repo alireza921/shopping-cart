@@ -1,8 +1,19 @@
+import {
+  useCart,
+  useCartAction,
+} from "../../context/cartprovider/cartprovider";
 import { products } from "../../data/DataBase";
 import styles from "./productlist.module.css";
+import { checkInCart } from "../../utils/check-in-cart";
+
 const ProductList = () => {
+
+  const dispatch = useCartAction();
+  const { cart } = useCart();
+
   const addToCartHandler = (product) => {
-    console.log(product);
+    // console.log(product);
+    dispatch({ type: "ADD_TO_CART", payload: product });
   };
   return (
     <>
@@ -20,7 +31,7 @@ const ProductList = () => {
                 <button
                   className={styles.btn}
                   onClick={() => addToCartHandler(product)}>
-                  Add to cart
+                  {checkInCart(product, cart) ? "go to store" : "Add to Cart"}
                 </button>
               </div>
             </section>

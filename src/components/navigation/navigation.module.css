@@ -1,5 +1,7 @@
 .holderNavigatin {
-     background-color: #e0e0e0;
+     background-color: #ede9fe;
+     padding: 8px;
+     margin: 8px;
 }
 
 .listContainer { 
@@ -15,5 +17,11 @@
 }
 
 .listItem a { 
-    color: #3f51b5;
+    color: #6d28d9;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.listItem a:hover { 
+    background-color: #fff;
 }
