@@ -5,15 +5,22 @@ import {
 import { products } from "../../data/DataBase";
 import styles from "./productlist.module.css";
 import { checkInCart } from "../../utils/check-in-cart";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductList = () => {
-
   const dispatch = useCartAction();
   const { cart } = useCart();
+  const navigate = useNavigate();
 
   const addToCartHandler = (product) => {
-    // console.log(product);
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    if (!checkInCart(product, cart)) {
+      dispatch({ type: "ADD_TO_CART", payload: product });
+      // toast.success("added to cart")
+    } else {
+      navigate("/cart");
+    }
+
   };
   return (
     <>

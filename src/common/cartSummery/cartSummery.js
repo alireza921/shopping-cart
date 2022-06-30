@@ -7,7 +7,7 @@ const CartSummery = () => {
   const originalTotalPrice = cart.length
     ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price ,  0)
     : 0;
-console.log(originalTotalPrice);
+    
   return (
     <section className={styles.cartSummeryHolder}>
       <article className={styles.summeryContainer}>
