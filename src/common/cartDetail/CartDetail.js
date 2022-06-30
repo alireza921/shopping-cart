@@ -3,7 +3,7 @@ import {
   useCartAction,
 } from "../../context/cartprovider/cartprovider";
 import styles from "./cartdetail.module.css";
-
+import { FaTrash } from "react-icons/fa";
 const CartDetail = () => {
   const { cart } = useCart();
   const dispatch = useCartAction();
@@ -37,9 +37,11 @@ const CartDetail = () => {
               </button>
               <span> {item.quantity} </span>
               <button
-                className={styles.btn}
+                className = {` ${
+                  item.quantity > 1 ? styles.btn : styles.removeBtn
+                } `}
                 onClick={() => decrementHandler(item)}>
-                -
+                {item.quantity > 1 ? " - " : <FaTrash />  }
               </button>
             </div>
           </article>

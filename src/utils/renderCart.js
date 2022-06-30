@@ -1,4 +1,5 @@
 import CartDetail from "../common/cartDetail/CartDetail";
+import CartSummery from "../common/cartSummery/cartSummery";
 
 export const renderCart = (cart) => {
   if (!cart.length) {
@@ -11,7 +12,7 @@ export const renderCart = (cart) => {
   
   return (
     <>
-      <section > cart summery </section>
+      <CartSummery /> 
       <CartDetail />
     </>
   );

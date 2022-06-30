@@ -1,0 +1,43 @@
+.cartSummeryHolder { 
+    width: 25%;
+    background: #ede9fe;
+    padding: 8px ;
+    margin: 8px;
+    border-radius: 12px;
+    color: #6d28d9;
+    padding: 8px;
+}
+
+.summeryList { 
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* padding: 5px; */
+    margin: 8px 12px;
+}
+
+.summeryPrice { 
+    border-bottom: solid 2px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 6px 0;
+    padding: 0 0 6px 0;
+}
+
+.summeryItem { 
+    padding: 5px;
+}
+
+
+.btn { 
+    width: 80%;
+    background-color: #6d28d9;
+    border: 2px solid #ede9fe;
+    border-radius: 8px;
+    padding: 9px 11px ;
+    color: #ede9fe;
+    margin: 12px 0;
+} 
