@@ -1,11 +1,10 @@
-// import Login from "../../components/navigation/Login Cmp/loginCmp";
+import LoginForm from "../../components/login Form/loginForm";
 
-import Login from "../../components/login Component/login";
 
 const LoginPage = () => {
     return ( 
         <section> 
-            <Login />
+            <LoginForm />
         </section>
      );
 }

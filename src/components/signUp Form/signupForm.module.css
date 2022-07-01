@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin: 8px 12px;
     border-radius: 5px;
 }
 
@@ -21,16 +21,16 @@
 } 
 
 .signupFooter { 
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-content: center;
-    justify-content: space-evenly;
-    width: 40%;
-    align-items: center;
+    justify-content: space-evenly; */
+    width: 25%;
+    /* align-items: center; */
     margin: 10px 0;
     font-weight: 500;
     /* border: solid 1px #6d28d9; */
-    border-radius: 12px;
+    /* border-radius: 12px; */
     padding: 8px;
     color: #6d28d9;
 }

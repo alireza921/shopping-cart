@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../../common/inputComponent/input";
-import styles from "./signup.module.css";
+import styles from "./signupForm.module.css";
 
 const inputValue = [
   { label: "Name", type: "text", name: "name" },
@@ -47,7 +47,7 @@ const validationSchema = yup.object({
   interests: yup.array().min(1).required("interests is required"),
 });
 
-const SignUp = () => {
+const SignUpForm = () => {
   const onSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm({ values: "" });
@@ -59,7 +59,7 @@ const SignUp = () => {
     validationSchema,
   });
 
-  return ( 
+  return (
     <form onSubmit={formik.handleSubmit} className={styles.container}>
       <Input inputValue={inputValue} formik={formik} />
       <div>
@@ -68,11 +68,10 @@ const SignUp = () => {
         </button>
       </div>
       <footer className={styles.signupFooter}>
-        <p> already have account ?</p>
-        <Link to='/login'> Login </Link>
+        <Link to='/login'>already have account ?</Link>
       </footer>
     </form>
   );
 };
 
-export default SignUp;
+export default SignUpForm;

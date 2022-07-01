@@ -1,11 +1,9 @@
-import SignUp from "../../components/signUpComponent/signupCmp";
+import SignUpForm from "../../components/signUp Form/signupForm";
 
 const SignUpPage = () => {
     return (  
         <section> 
-            <SignUp /> 
-
-
+            <SignUpForm />
         </section>
         );
 }
