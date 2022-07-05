@@ -1,15 +1,22 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../../common/inputComponent/input";
+import { useAuthAction } from "../../context/auth/authProvider";
+import { signupRequest } from "../../services/signupRequest";
 import styles from "./signupForm.module.css";
 
 const inputValue = [
   { label: "Name", type: "text", name: "name" },
   { label: "Email", type: "email", name: "email" },
   { label: "Phone Number", type: "phoneNumber", name: "phoneNumber" },
-  { label: "Password", type: "text", name: "password" },
-  { label: "PasswordConfirmation", type: "text", name: "passwordConfirmation" },
+  { label: "Password", type: "password", name: "password" },
+  {
+    label: "PasswordConfirmation",
+    type: "password",
+    name: "passwordConfirmation",
+  },
 ];
 
 const initialValues = {
@@ -29,10 +36,12 @@ const validationSchema = yup.object({
     .required("Name is Required !")
     .min(6, "Minimum 6 charachter "),
   email: yup.string().email("Email Is Invalid !").required("Email is Required"),
+
   password: yup
     .string()
     .required("Password is required")
     .min(8, "Minimum 8 character"),
+
   passwordConfirmation: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
@@ -43,13 +52,33 @@ const validationSchema = yup.object({
     .min(11, "minimum 11 number")
     .required("phone Number is required")
     .matches(phoneRegExp, "Phone number is not valid"),
-  gender: yup.string().required("gender is required"),
-  interests: yup.array().min(1).required("interests is required"),
 });
 
 const SignUpForm = () => {
+  const [error, setError] = useState(false);
+  const setAuth = useAuthAction()
   const onSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { name, email, password, phoneNumber } = values;
+    const userData = {
+      name,
+      email,
+      password,
+      phoneNumber,
+    };
+    // console.log(userData);
+    signupRequest(userData)
+    .then((res) =>
+    setAuth(res.data).then((res) =>
+      localStorage
+        .setItem("authState", JSON.stringify(res.data))
+        .then(() => setError(null))
+    )
+  )
+
+      // .then((res) => console.log(res.data))
+      // .then(() => setError(null))
+
+      .catch((err) => setError(err.message));
     resetForm({ values: "" });
   };
 
@@ -57,16 +86,21 @@ const SignUpForm = () => {
     initialValues,
     onSubmit,
     validationSchema,
+    validateOnMount: true,
   });
 
   return (
     <form onSubmit={formik.handleSubmit} className={styles.container}>
       <Input inputValue={inputValue} formik={formik} />
       <div>
-        <button type='submit' className={styles.btn}>
-          Submit
+        <button
+          type='submit'
+          className={`${styles.btn} ${!formik.isValid && styles.disabled} `}
+          disabled={!formik.isValid}>
+          Signup
         </button>
       </div>
+      <div className={styles.error}>{error && <p> {error} </p>}</div>
       <footer className={styles.signupFooter}>
         <Link to='/login'>already have account ?</Link>
       </footer>

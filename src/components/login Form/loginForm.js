@@ -1,11 +1,14 @@
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import styles from "../signUp Form/signupForm.module.css"
+import styles from "../signUp Form/signupForm.module.css";
 import Input from "../../common/inputComponent/input";
+import { loginRequest } from "../../services/loginrequest";
+import { useState } from "react";
+import { useAuth, useAuthAction } from "../../context/auth/authProvider";
 const inputValue = [
   { label: "Email", type: "email", name: "email" },
-  { label: "Password", type: "text", name: "password" },
+  { label: "Password", type: "password", name: "password" },
 ];
 const initialValues = {
   email: "",
@@ -21,8 +24,28 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = () => {
+  const [error, setError] = useState(false);
+  const auth = useAuth();
+  const setAuth = useAuthAction();
   const onSubmit = (values, { resetForm }) => {
-    console.log(values);
+    // console.log(values);
+    loginRequest(values)
+      .then((res) =>
+        setAuth(res.data).then((res) =>
+          localStorage
+            .setItem("authState", JSON.stringify(res.data))
+            .then(() => setError(null))
+        )
+      )
+
+
+      // .then((res) =>
+      //   localStorage.setItem("auhtState", JSON.stringify(res.data))
+      // )
+      // .then(() => setError(null))
+
+      
+      .catch((err) => setError(err.message));
     resetForm({ values: "" });
   };
 
@@ -30,20 +53,24 @@ const LoginForm = () => {
     initialValues,
     onSubmit,
     validationSchema,
+    validateOnMount: true,
   });
 
   return (
     <form onSubmit={formik.handleSubmit} className={styles.container}>
       <Input inputValue={inputValue} formik={formik} />
       <div>
-        <button type='submit' className={styles.btn}>
-          Submit
+        <button
+          type='submit'
+          className={`${styles.btn} ${!formik.isValid && styles.disabled} `}
+          disabled={!formik.isValid}>
+          Login
         </button>
       </div>
+      <div className={styles.error}>{error && <p> {error} </p>}</div>
+
       <footer className={styles.signupFooter}>
-        <Link to='/signup'>
-         don't have an account ? 
-        </Link>
+        <Link to='/signup'>don't have an account ?</Link>
       </footer>
     </form>
   );

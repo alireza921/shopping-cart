@@ -11,6 +11,7 @@
 
 .btn { 
     /* width: 80%; */
+    outline: none;
     font-weight: 400;
     background-color: #6d28d9;
     border: 2px solid #ede9fe;
@@ -18,19 +19,21 @@
     padding: 9px 25px ;
     color: #ede9fe;
     margin: 12px 0;
+    cursor: pointer;
 } 
 
+.disabled { 
+    background-color: #9f94ab;
+    cursor: no-drop;
+}
 .signupFooter { 
-    /* display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly; */
-    width: 25%;
-    /* align-items: center; */
     margin: 10px 0;
     font-weight: 500;
-    /* border: solid 1px #6d28d9; */
-    /* border-radius: 12px; */
     padding: 8px;
     color: #6d28d9;
+}
+
+.error { 
+    color: #f44336;
+    font-size: 12px;
 }
