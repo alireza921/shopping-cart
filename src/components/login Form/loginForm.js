@@ -27,24 +27,11 @@ const LoginForm = () => {
   const [error, setError] = useState(false);
   const auth = useAuth();
   const setAuth = useAuthAction();
+  
   const onSubmit = (values, { resetForm }) => {
     // console.log(values);
     loginRequest(values)
-      .then((res) =>
-        setAuth(res.data).then((res) =>
-          localStorage
-            .setItem("authState", JSON.stringify(res.data))
-            .then(() => setError(null))
-        )
-      )
-
-
-      // .then((res) =>
-      //   localStorage.setItem("auhtState", JSON.stringify(res.data))
-      // )
-      // .then(() => setError(null))
-
-      
+      .then((res) => console.log(res.data))
       .catch((err) => setError(err.message));
     resetForm({ values: "" });
   };

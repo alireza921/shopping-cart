@@ -1,3 +1,5 @@
 import http from "./httpService";
 
-export const loginRequest = (data) => http.post("/users/login", data);
+export function loginRequest (data) { 
+    return http.post("/users/login", data);
+}

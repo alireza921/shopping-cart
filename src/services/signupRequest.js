@@ -1,3 +1,5 @@
 import http from "./httpService";
 
-export const signupRequest = (data) => http.post("/users/signup", data);
+export function signupRequest(data) {
+  return http.post("/users", data);
+}

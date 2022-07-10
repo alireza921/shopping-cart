@@ -56,7 +56,7 @@ const validationSchema = yup.object({
 
 const SignUpForm = () => {
   const [error, setError] = useState(false);
-  const setAuth = useAuthAction()
+  const setAuth = useAuthAction();
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password, phoneNumber } = values;
     const userData = {
@@ -65,19 +65,9 @@ const SignUpForm = () => {
       password,
       phoneNumber,
     };
-    // console.log(userData);
+    
     signupRequest(userData)
-    .then((res) =>
-    setAuth(res.data).then((res) =>
-      localStorage
-        .setItem("authState", JSON.stringify(res.data))
-        .then(() => setError(null))
-    )
-  )
-
-      // .then((res) => console.log(res.data))
-      // .then(() => setError(null))
-
+      .then((res) => console.log("res", res))
       .catch((err) => setError(err.message));
     resetForm({ values: "" });
   };

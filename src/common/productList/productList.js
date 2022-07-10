@@ -7,11 +7,19 @@ import styles from "./productlist.module.css";
 import { checkInCart } from "../../utils/check-in-cart";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { getProduct } from "../../services/getproduct";
 
 const ProductList = () => {
   const dispatch = useCartAction();
   const { cart } = useCart();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getProduct()
+      .then((res) => console.log("data" ,  res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const addToCartHandler = (product) => {
     if (!checkInCart(product, cart)) {
@@ -20,7 +28,6 @@ const ProductList = () => {
     } else {
       navigate("/cart");
     }
-
   };
   return (
     <>
