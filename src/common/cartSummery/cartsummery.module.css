@@ -41,3 +41,10 @@
     color: #ede9fe;
     margin: 12px 0;
 } 
+
+
+@media screen and (max-width: 768px) { 
+    .cartSummeryHolder { 
+       width: 100%;
+    }
+}

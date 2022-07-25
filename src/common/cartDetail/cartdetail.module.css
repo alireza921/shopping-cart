@@ -71,3 +71,28 @@
     padding: 3px 8px;
     cursor: pointer;
 }
+
+@media screen and (max-width : 768px) {
+    .cartDetail { 
+        width: 100%;
+        align-items: center;
+    }
+    
+}
+
+
+@media screen and (max-width: 480px) { 
+    .cartContainer { 
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width: 480px) { 
+    .cartDetailDesc { 
+        margin: 0.5rem 0;   
+ }
+}
+
+

@@ -55,6 +55,7 @@ const validationSchema = yup.object({
 });
 
 const SignUpForm = () => {
+  
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
   const onSubmit = (values, { resetForm }) => {

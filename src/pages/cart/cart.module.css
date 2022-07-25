@@ -1,7 +1,7 @@
 
 .cartHolder { 
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: flex-start;
     padding: 0 1rem;
@@ -9,6 +9,14 @@
 }
 
 
-.cartSummery { 
+/* .cartSummery { 
     background-color: green;
+} */
+
+@media screen and (max-width: 768px) {
+    .cartHolder { 
+        flex-direction: column;
+        align-items: center;
+    }
 }
+

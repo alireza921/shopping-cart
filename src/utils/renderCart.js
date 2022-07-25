@@ -12,8 +12,8 @@ export const renderCart = (cart) => {
   
   return (
     <>
-      <CartSummery /> 
       <CartDetail />
+      <CartSummery /> 
     </>
   );
 };
