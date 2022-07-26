@@ -13,8 +13,8 @@ import ProfilePage from "./pages/profile/profilePage";
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
-        <AuthProvider>
+      <AuthProvider>
+        <BrowserRouter>
           <CartProvider>
             <Layout>
               <ToastContainer />
@@ -27,8 +27,8 @@ function App() {
               </Routes>
             </Layout>
           </CartProvider>
-        </AuthProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

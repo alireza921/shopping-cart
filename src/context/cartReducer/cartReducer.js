@@ -15,6 +15,7 @@ const cartReducer = (state, action) => {
       }
       return { ...state, cart: updatedCart , total : state.total + action.payload.offPrice };
     }
+    
     case "REMOVE_PRODUCT": {
       const updatedCart = [...state.cart];
       const updatedCartIndex = updatedCart.findIndex(

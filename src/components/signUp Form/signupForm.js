@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../../common/inputComponent/input";
 import { useAuthAction } from "../../context/auth/authProvider";
@@ -57,7 +57,7 @@ const validationSchema = yup.object({
 const SignUpForm = () => {
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
-
+  const navigate = useNavigate()
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password, phoneNumber } = values;
     const userData = {
@@ -68,8 +68,9 @@ const SignUpForm = () => {
     };
     signupRequest(userData)
       .then((res) => {
-        setError(false)
-        // setAuth(res.data);
+        setAuth(res.data);
+        setError(false);
+        navigate('/')
       })
       .catch((err) => {
         setError(err.response.data.message);

@@ -13,7 +13,7 @@ const Navigation = () => {
         <ul className={styles.listContainer}>
           <li className={styles.listItem}>
             {auth ? (
-              <Link to='profile'> profile </Link>
+              <Link to='profile'> {auth.name} </Link>
             ) : (
               <Link to='/login' className={styles.loginLink}>
                 <span>Log In</span>

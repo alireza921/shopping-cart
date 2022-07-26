@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import styles from "../signUp Form/signupForm.module.css";
 import Input from "../../common/inputComponent/input";
 import { loginRequest } from "../../services/loginrequest";
 import { useState } from "react";
 import { useAuth, useAuthAction } from "../../context/auth/authProvider";
+
 const inputValue = [
   { label: "Email", type: "email", name: "email" },
   { label: "Password", type: "password", name: "password" },
@@ -27,11 +28,15 @@ const LoginForm = () => {
   const [error, setError] = useState(false);
   const auth = useAuth();
   const setAuth = useAuthAction();
-
+  const navigate = useNavigate();
   const onSubmit = (values, { resetForm }) => {
     // console.log(values);
     loginRequest(values)
-      .then((res) => setError(false))
+      .then((res) => {
+        setAuth(res.data);
+        setError(false);
+        navigate("/");
+      })
       .catch((error) => {
         if (error.response && error.response.data.message) {
           setError(error.response.data.message);
