@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/signup Page/signUpPage";
 import AuthProvider from "./context/auth/authProvider";
 import ProfilePage from "./pages/profile/profilePage";
+import CheckoutPage from "./pages/checkout page/CheckOutPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
+                <Route path='/checkout' element={<CheckoutPage />} />
               </Routes>
             </Layout>
           </CartProvider>
