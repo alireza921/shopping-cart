@@ -58,6 +58,7 @@ const SignUpForm = () => {
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
   const navigate = useNavigate()
+
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password, phoneNumber } = values;
     const userData = {
@@ -69,6 +70,7 @@ const SignUpForm = () => {
     signupRequest(userData)
       .then((res) => {
         setAuth(res.data);
+        localStorage.setItem('authState' , JSON.stringify(res.data))
         setError(false);
         navigate('/')
       })

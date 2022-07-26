@@ -14,8 +14,8 @@ import CheckoutPage from "./pages/checkout page/CheckOutPage";
 function App() {
   return (
     <div className='App'>
-      <AuthProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
           <CartProvider>
             <Layout>
               <ToastContainer />
@@ -29,8 +29,8 @@ function App() {
               </Routes>
             </Layout>
           </CartProvider>
-        </BrowserRouter>
-      </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
 }

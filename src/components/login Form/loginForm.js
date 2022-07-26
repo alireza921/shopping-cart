@@ -5,7 +5,7 @@ import styles from "../signUp Form/signupForm.module.css";
 import Input from "../../common/inputComponent/input";
 import { loginRequest } from "../../services/loginrequest";
 import { useState } from "react";
-import { useAuth, useAuthAction } from "../../context/auth/authProvider";
+import { useAuthAction } from "../../context/auth/authProvider";
 
 const inputValue = [
   { label: "Email", type: "email", name: "email" },
@@ -26,14 +26,14 @@ const validationSchema = yup.object({
 
 const LoginForm = () => {
   const [error, setError] = useState(false);
-  const auth = useAuth();
   const setAuth = useAuthAction();
   const navigate = useNavigate();
+
   const onSubmit = (values, { resetForm }) => {
-    // console.log(values);
     loginRequest(values)
       .then((res) => {
         setAuth(res.data);
+        localStorage.setItem('authState' , JSON.stringify(res.data))
         setError(false);
         navigate("/");
       })
