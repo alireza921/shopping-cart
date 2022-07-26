@@ -27,12 +27,17 @@ const LoginForm = () => {
   const [error, setError] = useState(false);
   const auth = useAuth();
   const setAuth = useAuthAction();
-  
+
   const onSubmit = (values, { resetForm }) => {
     // console.log(values);
     loginRequest(values)
-      .then((res) => console.log(res.data))
-      .catch((err) => setError(err.message));
+      .then((res) => setError(false))
+      .catch((error) => {
+        if (error.response && error.response.data.message) {
+          setError(error.response.data.message);
+          console.log(error);
+        }
+      });
     resetForm({ values: "" });
   };
 

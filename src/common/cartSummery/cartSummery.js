@@ -19,7 +19,7 @@ const CartSummery = () => {
           </div>
           <li className={styles.summeryItem}> total price : {total} </li>
         </ul>
-        <button className={styles.btn}> go to next level </button>
+        <button className={styles.btn}> CheckOut  </button>
       </article>
     </section>
   );

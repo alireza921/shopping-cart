@@ -55,9 +55,9 @@ const validationSchema = yup.object({
 });
 
 const SignUpForm = () => {
-  
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
+
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password, phoneNumber } = values;
     const userData = {
@@ -66,10 +66,15 @@ const SignUpForm = () => {
       password,
       phoneNumber,
     };
-    
     signupRequest(userData)
-      .then((res) => console.log("res", res))
-      .catch((err) => setError(err.message));
+      .then((res) => {
+        setError(false)
+        // setAuth(res.data);
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.log(err);
+      });
     resetForm({ values: "" });
   };
 
