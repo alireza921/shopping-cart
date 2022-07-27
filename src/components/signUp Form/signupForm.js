@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../../common/inputComponent/input";
 import { useAuthAction } from "../../context/auth/authProvider";
+import { useQuery } from "../../hooks/useQuery";
 import { signupRequest } from "../../services/signupRequest";
 import styles from "./signupForm.module.css";
 
@@ -57,7 +58,10 @@ const validationSchema = yup.object({
 const SignUpForm = () => {
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+  console.log(query.get("redirect"));
 
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password, phoneNumber } = values;
@@ -70,9 +74,9 @@ const SignUpForm = () => {
     signupRequest(userData)
       .then((res) => {
         setAuth(res.data);
-        localStorage.setItem('authState' , JSON.stringify(res.data))
+        localStorage.setItem("authState", JSON.stringify(res.data));
         setError(false);
-        navigate('/')
+        navigate(redirect);
       })
       .catch((err) => {
         setError(err.response.data.message);
@@ -101,7 +105,7 @@ const SignUpForm = () => {
       </div>
       <div className={styles.error}>{error && <p> {error} </p>}</div>
       <footer className={styles.signupFooter}>
-        <Link to='/login'>already have account ?</Link>
+        <Link to={`/login?redirect=${redirect}`}>don't have an account ?</Link>
       </footer>
     </form>
   );

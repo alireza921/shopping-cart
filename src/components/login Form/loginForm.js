@@ -6,6 +6,7 @@ import Input from "../../common/inputComponent/input";
 import { loginRequest } from "../../services/loginrequest";
 import { useState } from "react";
 import { useAuthAction } from "../../context/auth/authProvider";
+import { useQuery } from "../../hooks/useQuery";
 
 const inputValue = [
   { label: "Email", type: "email", name: "email" },
@@ -29,13 +30,16 @@ const LoginForm = () => {
   const setAuth = useAuthAction();
   const navigate = useNavigate();
 
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+
   const onSubmit = (values, { resetForm }) => {
     loginRequest(values)
       .then((res) => {
         setAuth(res.data);
-        localStorage.setItem('authState' , JSON.stringify(res.data))
+        localStorage.setItem("authState", JSON.stringify(res.data));
         setError(false);
-        navigate("/");
+        navigate(redirect);
       })
       .catch((error) => {
         if (error.response && error.response.data.message) {
@@ -67,7 +71,7 @@ const LoginForm = () => {
       <div className={styles.error}>{error && <p> {error} </p>}</div>
 
       <footer className={styles.signupFooter}>
-        <Link to='/signup'>don't have an account ?</Link>
+        <Link to={`/signup?redirect=${redirect}`}>don't have an account ?</Link>
       </footer>
     </form>
   );

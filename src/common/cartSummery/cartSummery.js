@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth/authProvider";
 import { useCart } from "../../context/cartprovider/cartprovider";
 import styles from "./cartsummery.module.css";
 
 const CartSummery = () => {
   const { cart, total } = useCart();
+  const auth = useAuth() ;
 
   const originalTotalPrice = cart.length
     ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
@@ -22,9 +24,9 @@ const CartSummery = () => {
           </div>
           <li className={styles.summeryItem}> total price : {total} </li>
         </ul>
-        <Link to='/signup?redirect=checkout'>
-          <button className={styles.btn}> CheckOut </button>
-        </Link>
+        <Link to={`${auth ? '/checkout' : '/login?redirect=/checkout'}`}>
+          <button className={styles.btn} > CheckOut </button>
+       </Link> 
       </article>
     </section>
   );
