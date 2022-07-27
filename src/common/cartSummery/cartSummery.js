@@ -6,7 +6,7 @@ import styles from "./cartsummery.module.css";
 const CartSummery = () => {
   const { cart, total } = useCart();
   const auth = useAuth() ;
-
+console.log(auth);
   const originalTotalPrice = cart.length
     ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
     : 0;
