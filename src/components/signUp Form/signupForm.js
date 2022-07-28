@@ -7,6 +7,8 @@ import { useAuthAction } from "../../context/auth/authProvider";
 import { useQuery } from "../../hooks/useQuery";
 import { signupRequest } from "../../services/signupRequest";
 import styles from "./signupForm.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inputValue = [
   { label: "Name", type: "text", name: "name" },
@@ -71,16 +73,18 @@ const SignUpForm = () => {
       password,
       phoneNumber,
     };
+    
     signupRequest(userData)
       .then((res) => {
         setAuth(res.data);
         localStorage.setItem("authState", JSON.stringify(res.data));
         setError(false);
         navigate(redirect);
+        toast.success("succesfully loged in");
       })
       .catch((err) => {
         setError(err.response.data.message);
-        console.log(err);
+        toast.error(`${error.response.data.message}`);
       });
     resetForm({ values: "" });
   };

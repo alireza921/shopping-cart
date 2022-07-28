@@ -7,6 +7,8 @@ import { loginRequest } from "../../services/loginrequest";
 import { useState } from "react";
 import { useAuthAction } from "../../context/auth/authProvider";
 import { useQuery } from "../../hooks/useQuery";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inputValue = [
   { label: "Email", type: "email", name: "email" },
@@ -29,7 +31,6 @@ const LoginForm = () => {
   const [error, setError] = useState(false);
   const setAuth = useAuthAction();
   const navigate = useNavigate();
-
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
 
@@ -40,11 +41,12 @@ const LoginForm = () => {
         localStorage.setItem("authState", JSON.stringify(res.data));
         setError(false);
         navigate(redirect);
+        toast.success("succesfully loged in");
       })
       .catch((error) => {
         if (error.response && error.response.data.message) {
           setError(error.response.data.message);
-          console.log(error);
+          toast.error(`${error.response.data.message}`);
         }
       });
     resetForm({ values: "" });
@@ -69,7 +71,6 @@ const LoginForm = () => {
         </button>
       </div>
       <div className={styles.error}>{error && <p> {error} </p>}</div>
-
       <footer className={styles.signupFooter}>
         <Link to={`/signup?redirect=${redirect}`}>don't have an account ?</Link>
       </footer>

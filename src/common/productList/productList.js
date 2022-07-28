@@ -7,6 +7,7 @@ import styles from "./productlist.module.css";
 import { checkInCart } from "../../utils/check-in-cart";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductList = () => {
   const dispatch = useCartAction();
@@ -16,14 +17,13 @@ const ProductList = () => {
    const addToCartHandler = (product) => {
     if (!checkInCart(product, cart)) {
       dispatch({ type: "ADD_TO_CART", payload: product });
-      // toast.success("added to cart")
+      toast.success(`${product.name} add to your Cart`);
     } else {
       navigate("/cart");
     }
   };
   return (
     <>
-      <h2>Product List</h2>
       <section className={styles.productList}>
         <div className={styles.productListHolder}>
           {products.map((product) => (

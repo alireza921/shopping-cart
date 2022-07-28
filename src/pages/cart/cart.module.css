@@ -1,4 +1,16 @@
+ /* empty cart  */
+.cartEmpty{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.cartEmpty > h2 , a  { 
+    margin: 1rem 0;
+}
+
+/* add product in cart  */
 .cartHolder { 
     display: flex;
     flex-direction: row-reverse;
@@ -9,14 +21,9 @@
 }
 
 
-/* .cartSummery { 
-    background-color: green;
-} */
-
 @media screen and (max-width: 768px) {
     .cartHolder { 
         flex-direction: column;
         align-items: center;
     }
 }
-
