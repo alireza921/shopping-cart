@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/signup Page/signUpPage";
 import AuthProvider from "./context/auth/authProvider";
-import ProfilePage from "./pages/profile/profilePage";
+import ProfilePage from "./pages/profile page/profilePage";
 import CheckoutPage from "./pages/checkout page/CheckOutPage";
 
 function App() {

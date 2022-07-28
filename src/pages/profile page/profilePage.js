@@ -1,8 +1,8 @@
+import Profile from "../../common/profile/profile";
+
 const ProfilePage = () => {
     return (  
-        <div> 
-            Profile
-        </div>
+      <Profile />
     );
 }
  
