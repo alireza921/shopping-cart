@@ -1,0 +1,60 @@
+
+.profileHolder { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 1rem;
+    margin: 1rem 1.5rem;
+}
+
+.accsesMenu { 
+    position: relative;
+}
+
+.toggleModal { 
+    display: none;
+   
+}
+
+.listContainer { 
+    background: #ede9fe;
+    color: #6d28d9;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 2rem 0.5rem;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.listContainer li { 
+    padding: 5px 8px;
+}
+
+@media screen and (max-width: 480px) {
+    .listContainer { 
+        width: 0px;
+        padding: 0;
+    }
+    .toggleModal { 
+        display: block;
+        position: fixed;
+        top: 100px;
+        left: 28px;
+    }
+}
+
+
+.openModal { 
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: -16px;
+    width:85vw;
+    transition: 0.5s;
+    }
+    

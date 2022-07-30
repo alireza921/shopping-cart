@@ -8,70 +8,6 @@
     margin: 1rem 1.5rem;
 }
 
-@media screen and (max-width: 768px) {
-    .checkoutHolder { 
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* checkout Auht  */
-.checkoutAuth { 
-    display: flex;
-    width: 56%;
-    flex-direction: column;
-    align-items: flex-end;
-    align-content: center;
-    background: #ede9fe;
-    padding: 12px 15px;
-    color: #6d28d9;
-    border-radius: 12px;
-}
-/* 
-.checkoutAuth > h2 { 
-    margin: 8px;
-    padding: 8px;
-} */
-
-.authContainer { 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-end;
-    width: 95%;
-    border-radius:12px;
-    color: #1e293b;
-}
-
-
-.listContainer { 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0.5rem 0;
-}
-
-.listContainer > li { 
-    padding: 5px 8px;
-}
-
-/* media Query  check out Auth*/
-
-@media screen and (max-width : 768px) {
-    .checkoutAuth { 
-        width: 100%;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 480px) { 
-    .authContainer { 
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-}
 
 /* check out Summery  */
 
@@ -82,14 +18,6 @@
     border-radius: 12px;
     color: #6d28d9;
     
-}
-
-
-@media screen and (max-width: 768px) { 
-    .checkoutSummeryHolder { 
-       width: 100%;
-       margin-top: 1rem;
-    }
 }
 
 .checkoutSummeryTitle { 
@@ -134,4 +62,16 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+}
+
+/* Media Query  */
+@media screen and (max-width: 768px) {
+    .checkoutHolder { 
+        flex-direction: column;
+        align-items: center;
+    }
+    .checkoutSummeryHolder { 
+        width: 100%;
+        margin-top: 1rem;
+     }
 }
