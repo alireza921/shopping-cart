@@ -9,11 +9,9 @@
 }
 
 .summeryList { 
-    /* background-color: #fff; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* padding: 5px; */
     margin: 8px 12px;
 }
 

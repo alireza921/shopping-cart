@@ -10,6 +10,7 @@ import SignUpPage from "./pages/signup Page/signUpPage";
 import AuthProvider from "./context/auth/authProvider";
 import ProfilePage from "./pages/profile page/profilePage";
 import CheckoutPage from "./pages/checkout page/CheckOutPage";
+import NotFound from "./pages/not Found/notFound";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/profile' element={<ProfilePage />} />
                 <Route path='/checkout' element={<CheckoutPage />} />
+                <Route path='*' element={<NotFound />} />
               </Routes>
             </Layout>
           </CartProvider>

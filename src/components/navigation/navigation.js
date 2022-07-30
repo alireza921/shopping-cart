@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/cartprovider/cartprovider";
 import styles from "./navigation.module.css";
 import { MdOutlineShoppingCart } from "react-icons/md";
-
 import { TbLogin } from "react-icons/tb";
 import { useAuth } from "../../context/auth/authProvider";
 import SubMena from "../../common/submena/submena";
-
 
 const Navigation = () => {
   const { cart } = useCart();
@@ -18,7 +16,7 @@ const Navigation = () => {
           {auth ? (
             <>
               <Link to='profile'> {auth.name} </Link>
-             <SubMena />
+              <SubMena />
             </>
           ) : (
             <Link to='/login' className={styles.loginLink}>

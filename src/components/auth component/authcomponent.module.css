@@ -37,8 +37,7 @@
     padding: 5px 8px;
 }
 
-/* media Query  check out Auth*/
-
+/* media Query */
 @media screen and (max-width : 768px) {
     .authHolder { 
         width: 100%;

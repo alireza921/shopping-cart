@@ -52,7 +52,7 @@ const Checkout = () => {
             </section>
           </>
         ) : (
-          <div style={{margin:'1rem auto' }}>
+          <div style={{ margin: "1rem auto" }}>
             <Link to={redirect}> Please Log In First </Link>
           </div>
         )}

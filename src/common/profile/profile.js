@@ -9,7 +9,7 @@ const Profile = () => {
   const [isShow, setIsShow] = useState(false);
   const auth = useAuth();
   const redirect = "/login?redirect=/profile";
-  
+
   return (
     <section className={styles.profileHolder}>
       {auth ? (

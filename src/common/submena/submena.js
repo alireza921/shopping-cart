@@ -5,9 +5,8 @@ import styles from "./submena.module.css";
 const SubMena = () => {
   const [isShow, setIsShow] = useState(false);
   const logoutHandler = () => {
-    if (window.confirm("Do You want to Logout ?!") == true) {
+    if (window.confirm("Do You want to Logout ?!") === true) {
       localStorage.removeItem("authState");
-      console.log("delet");
     }
   };
   return (
